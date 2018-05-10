@@ -7,3 +7,4 @@ do
 ip="$net$i"
 ping -c1 $ip &>>/dev/null && echo "$ip 0" || echo "$ip -1"
 done >> "$oldstate"
+#
