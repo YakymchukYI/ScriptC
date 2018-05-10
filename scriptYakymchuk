@@ -1,0 +1,9 @@
+#!/bin/bash
+net="10.7.180."
+oldstate="old.txt"
+
+for i in {100..105}
+do
+ip="$net$i"
+ping -c1 $ip &>>/dev/null && echo "$ip 0" || echo "$ip -1"
+done >> "$oldstate"
