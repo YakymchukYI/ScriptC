@@ -1,7 +1,7 @@
 #!/bin/bash
 net="10.7.180."
 oldstate="old.txt"
-newstate="new.txt"
+difstate=""
 [ -s $oldstate ] || for (( i=0; i<255; i++ )); do echo 2; done >> $oldstate
 state=( $(cat $oldstate) )
 for i in {100..105}
@@ -11,8 +11,9 @@ ping -c1 $ip &>>/dev/null
 res=$?
 if [ $res -ne ${state[$i]} ]
 then
-echo "$ip $res"
+difstate="$difstate $ip $res"
 state[$i]=$res
 fi
-done > $newstate
+done
+echo $difstate | mutt -s "IP configuration" yaroslav.yakymchuk27@gmail.com
 echo ${state[@]} > $oldstate 
