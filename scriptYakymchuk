@@ -15,5 +15,6 @@ difstate="$difstate $ip $res"
 state[$i]=$res
 fi
 done
-echo $difstate | mutt -s "IP configuration" yaroslav.yakymchuk27@gmail.com
+
+[ "$difstate" ] && echo $difstate | mutt -s "IP configuration" yaroslav.yakymchuk27@gmail.com
 echo ${state[@]} > $oldstate 
