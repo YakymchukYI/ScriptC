@@ -4,7 +4,7 @@ oldstate="old.txt"
 difstate=""
 [ -s $oldstate ] || for (( i=0; i<255; i++ )); do echo 2; done >> $oldstate
 state=( $(cat $oldstate) )
-for i in {100..105}
+for i in {105..110}
 do
 ip="$net$i"
 ping -c1 $ip &>>/dev/null
